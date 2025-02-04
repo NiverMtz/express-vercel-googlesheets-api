@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { google } = require("googleapis");
 
 const app = express();
@@ -29,6 +30,14 @@ const sheets = google.sheets({ version: "v4", auth });
 
 // ID de tu hoja de cálculo
 const spreadsheetId = process.env.SPREADSHEET_ID;
+
+app.use(
+  cors({
+    origin: "http://localhost:5173/news", // Permite solo este dominio
+    methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
+    credentials: true, // Permite enviar cookies
+  })
+);
 
 // Endpoint para obtener datos
 app.get("/api/data", async (req, res) => {
