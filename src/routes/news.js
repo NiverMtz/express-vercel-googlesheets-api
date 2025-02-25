@@ -21,6 +21,7 @@ router.get("/", async (req, res) => {
           title: row[1],
           description: row[2],
           type: row[3],
+          url: row[4],
         }))
         .slice(1, rows.length);
       res.json(data);
