@@ -14,7 +14,10 @@ const credentials = {
 };
 const auth = new google.auth.GoogleAuth({
   credentials,
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  scopes: [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/generative-language",
+  ],
 });
 
 const attachAuthClient = async (req, res, next) => {
